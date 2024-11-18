@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia Titan</title>
+    <link rel="icon" href="img/">
+    <link rel="stylesheet" href="assets/css/norus.css">
+    <link rel="stylesheet" href="slick/slick.css">
+    <link rel="stylesheet" href="slick/slick-theme.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  </head>
+
+<body>
+    <header>
+        <div class="topo">
+            <div id="bnt_home">
+                <span id="iconMenu" class="material-symbols-outlined" onclick="clickMenu()">menu</span>
+            </div>
+
+            <a href="index.php"><img class="norusicone" src=""></a>
+
+            <div id="btn_mob" class="topo">
+                <a href="treino.php"><img class="bnt-home" src="assets/img/btnHalter2.png"></a>
+            </div>
+        </div>
+        <menu>
+            <div class="cabeçalho">
+                <div class="cabeçalho-link">
+                    <li><a href="norusesportes.php">Seu treino</a></li>
+                    <li><a href="frequencia.php">Sua frequência</a></li>
+                    <li><a href="mesalidades.php">Mensalidades</a></li>
+                </div>
+            </div>
+        </menu>
+    </header>
+    <main>
+        <div class="container-mensalidades">
+            <div class="mensalidades">
+
+                <div class="card-mensalidade-november">
+                    <div class="card-mensalidade" id="delete">
+                        <div class="card-mensalidade-info">
+                            <h3>Mensalidade 01/11/2024</h3>
+                            <h4>Preço: R$120,00</h4>
+                        </div>
+                        <div class="card-mensalidade-preco">
+                            <h4>Pendente</h4>
+                            <button><a href="pagamentoNovembro.php">
+                                    <h4>Pagar</h4>
+                                </a></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="card-mensalidade">
+                    <div class="card-mensalidade-info">
+                        <h3>Mensalidade 01/11/2024</h3>
+                        <h4>Preço: R$120,00</h4>
+                    </div>
+                    <div class="card-mensalidade-preco">
+                        <h4>Pendente</h4>
+                        <button><a href="pagamentoNovembro.php">
+                                <h4>Pagar</h4>
+                            </a></button>
+                    </div>
+                </div> -->
+
+                <div class="card-mensalidade">
+                    <div class="card-mensalidade-info">
+                        <h3>Mensalidade 01/10/2024</h3>
+                        <h4>Preço: R$99,99</h4>
+                    </div>
+                    <div class="card-mensalidade-preco pago">
+                        <h4>Paga</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container-footer">
+            <div class="footer">
+                <div class="redirectPage">
+                    <a href="index.php"><img class="bnt-footer" src="assets/img/btnCasa2.png"></a>
+                    <h4>Inicio</h4>
+                </div>
+
+                <div class="redirectPage">
+                    <a href="frequencia.php"><img class="bnt-footer" src="assets/img/btnCale2.png"></a>
+                    <h4><a href="frequencia.php">Frequência</a></h4>
+                </div>
+
+                <div class="redirectPage">
+                    <img class="bnt-footer" src="assets/img/btnHalter2.png">
+                    <h4><a href="treino.php">Treino</a></h4>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const addToCartButtons = document.getElementsByClassName("button-hover-background");
+        for (var i = 0; i < addToCartButtons.length; i++) {
+            addToCartButtons[i].addEventListener("click", addProductToCart);
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const productsCart = JSON.parse(localStorage.getItem('cartProducts')) || [];
+            const tableBody = document.querySelector(".card-mensalidade-november");
+
+            productsCart.forEach(product => {
+                let newCartProduct = document.createElement("div");
+                let divDelete = document.getElementById("delete");
+                newCartProduct.classList.add("cart-product");
+
+                newCartProduct.innerHTML = `
+                    <div class="card-mensalidade">
+                        <div class="card-mensalidade-info">
+                            <h3 class="cart-product-title">${product.name}</h3>
+                            <h4 class="cart-product-price">${product.price}</h4>
+                        </div>
+                        <div class="card-mensalidade-preco pago">
+                            <h4>Paga</h4>
+                        <div>
+                    </div>
+                `;
+
+                divDelete.setAttribute('style', 'display: none')
+                tableBody.append(newCartProduct);
+            });
+
+            // Adicione os eventos necessários para remover produtos e atualizar o total  <button type="button" class="remove-product-button">Remover</button>
+            ready();
+        });
+    </script>
+    <script src="assets/js/loja.js" async></script>
+    <script src="assets/js/acoes.js"></script>
+    <script src="assets/js/signin.js"></script>
+</body>
+
+</html>
